@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 import sys
 
+stopwords = set(['the', 'and']) 
+
 # get all lines from stdin
 for line in sys.stdin:
     # remove leading and trailing whitespace
@@ -11,4 +13,5 @@ for line in sys.stdin:
 
     # output tuples (word, 1) in tab-delimited format
     for word in words:
-        print '%s\t%s' % (word, "1")
+	if word not in stopwords:
+	    print '%s\t%s' % (word, "1")
